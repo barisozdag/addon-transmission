@@ -1,0 +1,17 @@
+#!/usr/bin/with-contenv bashio
+# ==============================================================================
+# Runs Transmission
+# ==============================================================================
+bashio::log.info "Starting Transmission..."
+
+log_level='--log-debug'
+
+if bashio::config.equals 'log_level' 'info'; then
+    log_level='--log-info'
+fi
+if bashio::config.equals 'log_level' 'error'; then
+    log_level='--log-error'
+fi
+
+
+exec /usr/bin/transmission-daemon ${log_level} --foreground --config-dir /config/transmission
