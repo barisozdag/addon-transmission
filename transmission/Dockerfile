@@ -10,6 +10,7 @@ COPY rootfs /
 
 # Setup base system
 ARG BUILD_ARCH=aarch64
+ARG RELEASE
 # https://github.com/ronggang/transmission-web-control
 ARG TWCVERSION=v1.6.1-update1
 
