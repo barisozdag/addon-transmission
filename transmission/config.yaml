@@ -4,6 +4,7 @@ version: dev
 slug: transmission
 description: The torrent client for Home Assistant with Custom UI
 url: https://github.com/barisozdag/addon-transmission
+codenotary: baris@ozdag.net
 startup: services
 ingress: true
 panel_icon: "mdi:progress-download"
