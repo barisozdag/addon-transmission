@@ -12,6 +12,7 @@ comparison to installing any other Home Assistant add-on.
    Assistant instance.
 
    [![Open this add-on in your Home Assistant instance.][addon-badge]][addon]
+
 1. Save the add-on configuration.
 1. Start the "Transmission" add-on.
 1. Check the logs of the "Transmission" to see if everything went well.
