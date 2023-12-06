@@ -78,7 +78,7 @@ RUN apk add --no-cache \
 #
 # This will not work. The sed statement below changes the way the RPC endpoint is determined by keeping the regular endpoint
 # when accessing transmission as usual, but stripping the relative part when using ingress.
-RUN sed -i 's|'"'"'\.\./rpc'"'"'|window.location.pathname.endsWith("/web/") \|\| window.location.pathname.endsWith("/web/") ? "../rpc" : "rpc"|' /usr/share/transmission/web/javascript/remote.js
+RUN sed -i 's|"../rpc"|window.location.pathname.endsWith("/web/") \|\| window.location.pathname.endsWith("/web/") ? "../rpc" : "rpc"|' /usr/share/transmission/public_html/transmission-app.js
 RUN sed -i 's|"../rpc"|window.location.pathname.endsWith("/web/") \|\| window.location.pathname.endsWith("/web/") ? "../rpc" : "rpc"|' /opt/uitheme/twc/tr-web-control/script/transmission.js
 RUN sed -i 's|"../rpc"|window.location.pathname.endsWith("/web/") \|\| window.location.pathname.endsWith("/web/") ? "../rpc" : "rpc"|' /opt/uitheme/twc/tr-web-control/script/min/transmission.min.js
 
