@@ -47,7 +47,7 @@ check [the contributor's page][contributors].
 
 MIT License
 
-Copyright (c) 2018 Pierrick Rouxel, 2021-2022 Barış Özdağ
+Copyright (c) 2018 Pierrick Rouxel, 2021-2023 Barış Özdağ
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -82,7 +82,7 @@ SOFTWARE.
 [github-actions]: https://github.com/barisozdag/addon-transmission/actions
 [issue]: https://github.com/barisozdag/addon-transmission/issues
 [license-shield]: https://img.shields.io/github/license/barisozdag/addon-transmission.svg
-[maintenance-shield]: https://img.shields.io/maintenance/yes/2022.svg
+[maintenance-shield]: https://img.shields.io/maintenance/yes/2023.svg
 [pierrick]: https://github.com/pierrickrouxel
 [project-stage-shield]: https://img.shields.io/badge/project%20stage-production%20ready-brightgreen.svg
 [releases-shield]: https://img.shields.io/github/release/barisozdag/addon-transmission.svg
