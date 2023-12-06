@@ -5,4 +5,4 @@ build_from:
   armhf: ghcr.io/hassio-addons/base/armhf:14.3.3
   armv7: ghcr.io/hassio-addons/base/armv7:14.3.3
 args:
-  release: 3.00-r5
+  release: 4.0.4-r0
