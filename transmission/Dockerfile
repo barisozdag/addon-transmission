@@ -1,4 +1,4 @@
-ARG BUILD_FROM=ghcr.io/hassio-addons/base/aarch64:11.0.0
+ARG BUILD_FROM=ghcr.io/hassio-addons/base/aarch64:14.3.3
 # hadolint ignore=DL3006
 FROM ${BUILD_FROM}
 
@@ -16,12 +16,12 @@ ARG TWCVERSION=v1.6.1-update1
 
 # Setup base
 RUN apk add --no-cache \
-    curl=7.80.0-r0 \
-    coreutils=9.0-r2 \
-    nginx=1.20.2-r0 \
-    tar=1.34-r0 \
+    curl=8.4.0-r0 \
+    coreutils=9.3-r1 \
+    nginx=1.24.0-r7 \
+    tar=1.34-r3 \
     transmission-daemon=${RELEASE} \
-    unzip=6.0-r9 \
+    unzip=6.0-r14 \
     && echo "**** UI Installation ****" \
     && mkdir -p /opt/uitheme \
     && mkdir -p /tmp/twctemp \
