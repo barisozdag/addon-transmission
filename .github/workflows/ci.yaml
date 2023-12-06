@@ -14,5 +14,3 @@ on:
 jobs:
   workflows:
     uses: barisozdag/workflows/.github/workflows/addon-ci.yaml@main
-    secrets:
-      ADDON_TOKEN: ${{ secrets.GITHUB_TOKEN }}
