@@ -15,7 +15,9 @@ on:
 jobs:
   workflows:
     uses: barisozdag/workflows/.github/workflows/addon-deploy.yaml@main
+    with:
+      repository: haddons-repo
+      repository_edge: haddons-repo-edge
+      repository_beta: haddons-repo-beta
     secrets:
-      CAS_API_KEY: ${{ secrets.CAS_API_KEY }}
       DISPATCH_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
-      ADDON_TOKEN: ${{ secrets.GITHUB_TOKEN }}

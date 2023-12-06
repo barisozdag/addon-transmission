@@ -12,6 +12,4 @@ on:
 
 jobs:
   workflows:
-    uses: barisozdag/workflows/.github/workflows/pr-labels.yaml@main
-    secrets:
-      ADDON_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    uses: hassio-addons/workflows/.github/workflows/pr-labels.yaml@main
