@@ -1,0 +1,84 @@
+#!/usr/bin/with-contenv bashio
+# shellcheck shell=bash
+# ==============================================================================
+
+if bashio::config.equals 'uitheme' 'transmission-web-control' && bashio::fs.directory_exists \
+        "/opt/uitheme/twc"; then
+    bashio::log.info 'Enabling Transmission Web Control UI...'
+    printf "/opt/uitheme/twc/" > /var/run/s6/container_environment/TRANSMISSION_WEB_HOME
+fi
+
+if bashio::config.equals 'uitheme' 'combustion' && bashio::fs.directory_exists \
+        "/opt/uitheme/combustion"; then
+    bashio::log.info 'Enabling Combustion UI...'
+    printf "/opt/uitheme/combustion/" > /var/run/s6/container_environment/TRANSMISSION_WEB_HOME
+fi
+
+if bashio::config.equals 'uitheme' 'flood-for-transmission' && bashio::fs.directory_exists \
+        "/opt/uitheme/flood-for-transmission"; then
+    bashio::log.info 'Enabling Flood for Transmission UI...'
+    printf "/opt/uitheme/flood-for-transmission/" > /var/run/s6/container_environment/TRANSMISSION_WEB_HOME
+fi
+
+if bashio::config.equals 'uitheme' 'kettu' && bashio::fs.directory_exists \
+        "/opt/uitheme/kettu"; then
+    bashio::log.info 'Enabling Kettu UI...'
+    printf "/opt/uitheme/kettu/" > /var/run/s6/container_environment/TRANSMISSION_WEB_HOME
+fi
+
+if bashio::config.equals 'uitheme' 'default'; then
+    bashio::log.info 'Enabling Default UI...'
+    rm -f /var/run/s6/container_environment/TRANSMISSION_WEB_HOME
+fi
+
+# Check authentication requirements, if enabled
+if bashio::config.true 'authentication_required'; then
+    if ! bashio::config.has_value 'username'; then
+        bashio::exit.nok 'Transmission authentication is enabled, but no username was specified'
+    fi
+
+    if ! bashio::config.has_value 'password'; then
+        bashio::exit.nok 'Transmission authentication is enabled, but no password was specified'
+    fi
+fi
+
+# Transmission Configuration
+declare CONFIG
+declare authentication_required
+declare username
+declare password
+declare download_dir
+declare incomplete_dir
+
+if ! bashio::fs.directory_exists '/config/transmission'; then
+  mkdir '/config/transmission'
+fi
+
+if ! bashio::fs.file_exists '/config/transmission/settings.json'; then
+  echo "{}" > /config/transmission/settings.json
+fi
+
+CONFIG=$(</config/transmission/settings.json)
+
+# Defaults
+incomplete_dir=$(bashio::config 'incomplete_dir')
+download_dir=$(bashio::config 'download_dir')
+CONFIG=$(bashio::jq "${CONFIG}" ".\"incomplete-dir\"=\"${incomplete_dir}\"")
+CONFIG=$(bashio::jq "${CONFIG}" ".\"incomplete-dir-enabled\"=true")
+CONFIG=$(bashio::jq "${CONFIG}" ".\"download-dir\"=\"${download_dir}\"")
+CONFIG=$(bashio::jq "${CONFIG}" ".\"rpc-whitelist-enabled\"=false")
+CONFIG=$(bashio::jq "${CONFIG}" ".\"rpc-host-whitelist-enabled\"=false")
+CONFIG=$(bashio::jq "${CONFIG}" ".\"bind-address-ipv4\"=\"0.0.0.0\"")
+
+authentication_required=$(bashio::config 'authentication_required')
+CONFIG=$(bashio::jq "${CONFIG}" ".\"rpc-authentication-required\"=${authentication_required}")
+
+
+username=$(bashio::config 'username')
+CONFIG=$(bashio::jq "${CONFIG}" ".\"rpc-username\"=\"${username}\"")
+
+
+password=$(bashio::config 'password')
+CONFIG=$(bashio::jq "${CONFIG}" ".\"rpc-password\"=\"${password}\"")
+
+echo "${CONFIG}" > /config/transmission/settings.json
