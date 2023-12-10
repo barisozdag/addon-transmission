@@ -42,6 +42,6 @@ schema:
   password: str
   download_dir: match(^/(share|media))
   incomplete_dir: match(^/(share|media))
-  uitheme: list(default|transmission-web-control|combustion|flood-for-transmission|kettu)
+  uitheme: list(default|transmission-web-control|combustion|flood-for-transmission|kettu|trguing)
 environment:
   LOG_FORMAT: "{LEVEL}: {MESSAGE}"
