@@ -8,6 +8,7 @@ startup: services
 ingress: true
 init: false
 panel_icon: "mdi:progress-download"
+codenotary: baris@ozdag.net
 arch:
   - aarch64
   - amd64

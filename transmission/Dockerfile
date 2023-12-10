@@ -1,4 +1,4 @@
-ARG BUILD_FROM=ghcr.io/hassio-addons/base/aarch64:14.3.3
+ARG BUILD_FROM=ghcr.io/hassio-addons/base/aarch64:15.0.1
 # hadolint ignore=DL3006
 FROM ${BUILD_FROM}
 
@@ -17,10 +17,10 @@ ARG TRGUINGVERSION=v1.0.0
 
 # Setup base
 RUN apk add --no-cache \
-    curl=8.4.0-r0 \
-    coreutils=9.3-r1 \
-    nginx=1.24.0-r7 \
-    tar=1.34-r3 \
+    curl=8.5.0-r0 \
+    coreutils=9.4-r1 \
+    nginx=1.24.0-r14 \
+    tar=1.35-r2 \
     transmission-daemon=${RELEASE} \
     unzip=6.0-r14 \
     && echo "**** UI Installation ****" \
