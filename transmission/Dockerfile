@@ -13,7 +13,7 @@ ARG BUILD_ARCH=aarch64
 ARG RELEASE
 # https://github.com/ronggang/transmission-web-control
 ARG TWCVERSION=v1.6.1-update1
-ARG TRGUINGVERSION=v1.1.0
+ARG TRGUINGVERSION=v1.3.0
 
 # Setup base
 RUN apk add --no-cache \
@@ -87,7 +87,7 @@ RUN apk add --no-cache \
 # This will not work. The sed statement below changes the way the RPC endpoint is determined by keeping the regular endpoint
 # when accessing transmission as usual, but stripping the relative part when using ingress.
 RUN sed -i 's|"../rpc"|window.location.pathname.endsWith("/web/") \|\| window.location.pathname.endsWith("/web/") ? "../rpc" : "rpc"|' /usr/share/transmission/public_html/transmission-app.js \
-  && sed -i 's|"../rpc"|window.location.pathname.endsWith("/web/") \|\| window.location.pathname.endsWith("/web/") ? "../rpc" : "rpc"|' /opt/uitheme/trguing/434.2f37bd725fb02227a920.bundle.js \
+  && sed -i 's|"../rpc"|window.location.pathname.endsWith("/web/") \|\| window.location.pathname.endsWith("/web/") ? "../rpc" : "rpc"|' /opt/uitheme/trguing/434.f091bc6ebd7259421664.bundle.js \
   && sed -i 's|"../rpc"|window.location.pathname.endsWith("/web/") \|\| window.location.pathname.endsWith("/web/") ? "../rpc" : "rpc"|' /opt/uitheme/twc/tr-web-control/script/transmission.js \
   && sed -i 's|"../rpc"|window.location.pathname.endsWith("/web/") \|\| window.location.pathname.endsWith("/web/") ? "../rpc" : "rpc"|' /opt/uitheme/twc/tr-web-control/script/min/transmission.min.js
 
