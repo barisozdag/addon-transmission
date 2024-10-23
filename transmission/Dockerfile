@@ -17,11 +17,10 @@ ARG TRGUINGVERSION=v1.3.0
 
 # Setup base
 RUN apk add --no-cache \
-    curl=8.9.0-r0 \
+    curl=8.10.1-r0 \
     coreutils=9.5-r1 \
     nginx=1.26.2-r0 \
     tar=1.35-r2 \
-    transmission-daemon=${RELEASE} \
     unzip=6.0-r14 \
     && echo "**** UI Installation ****" \
     && mkdir -p /opt/uitheme \
@@ -63,7 +62,9 @@ RUN apk add --no-cache \
         /opt/uitheme/ \
     && echo "**** cleanup ****" \
     && rm -rf \
-        /tmp/*
+        /tmp/* \
+    && apk --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community add --no-cache \
+      transmission-daemon=${RELEASE}
 
 # Small hack needed for ingress support
 #
