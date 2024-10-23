@@ -13,7 +13,7 @@ ARG BUILD_ARCH=aarch64
 ARG RELEASE
 # https://github.com/ronggang/transmission-web-control
 ARG TWCVERSION=v1.6.1-update1
-ARG TRGUINGVERSION=v1.3.0
+ARG TRGUINGVERSION=v1.4.0
 
 # Setup base
 RUN apk add --no-cache \
@@ -22,6 +22,8 @@ RUN apk add --no-cache \
     nginx=1.26.2-r0 \
     tar=1.35-r2 \
     unzip=6.0-r14 \
+    && apk --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community add --no-cache \
+      transmission-daemon=${RELEASE} \
     && echo "**** UI Installation ****" \
     && mkdir -p /opt/uitheme \
     && mkdir -p /tmp/twctemp \
@@ -62,9 +64,7 @@ RUN apk add --no-cache \
         /opt/uitheme/ \
     && echo "**** cleanup ****" \
     && rm -rf \
-        /tmp/* \
-    && apk --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community add --no-cache \
-      transmission-daemon=${RELEASE}
+        /tmp/*
 
 # Small hack needed for ingress support
 #
@@ -88,7 +88,7 @@ RUN apk add --no-cache \
 # This will not work. The sed statement below changes the way the RPC endpoint is determined by keeping the regular endpoint
 # when accessing transmission as usual, but stripping the relative part when using ingress.
 RUN sed -i 's|"../rpc"|window.location.pathname.endsWith("/web/") \|\| window.location.pathname.endsWith("/web/") ? "../rpc" : "rpc"|' /usr/share/transmission/public_html/transmission-app.js \
-  && sed -i 's|"../rpc"|window.location.pathname.endsWith("/web/") \|\| window.location.pathname.endsWith("/web/") ? "../rpc" : "rpc"|' /opt/uitheme/trguing/434.f091bc6ebd7259421664.bundle.js \
+  && sed -i 's|"../rpc"|window.location.pathname.endsWith("/web/") \|\| window.location.pathname.endsWith("/web/") ? "../rpc" : "rpc"|' /opt/uitheme/trguing/258.12fc5967c6c93c201910.bundle.js \
   && sed -i 's|"../rpc"|window.location.pathname.endsWith("/web/") \|\| window.location.pathname.endsWith("/web/") ? "../rpc" : "rpc"|' /opt/uitheme/twc/tr-web-control/script/transmission.js \
   && sed -i 's|"../rpc"|window.location.pathname.endsWith("/web/") \|\| window.location.pathname.endsWith("/web/") ? "../rpc" : "rpc"|' /opt/uitheme/twc/tr-web-control/script/min/transmission.min.js
 
