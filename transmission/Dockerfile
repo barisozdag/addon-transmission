@@ -63,7 +63,7 @@ RUN apk add --no-cache \
     && echo "**** cleanup ****" \
     && rm -rf \
         /tmp/* \
-    && apk -X https://dl-cdn.alpinelinux.org/alpine/edge/main --no-cache add \
+    && apk -X https://dl-cdn.alpinelinux.org/alpine/edge/community --no-cache add \
         transmission-daemon=${RELEASE}
 
 # Small hack needed for ingress support
