@@ -22,6 +22,7 @@ RUN apk add --no-cache \
     nginx=1.26.3-r0 \
     tar=1.35-r2 \
     unzip=6.0-r15 \
+    miniupnpc=2.3.2-r0 \
     && apk --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community add --no-cache \
       transmission-daemon=${RELEASE} \
     && echo "**** UI Installation ****" \
