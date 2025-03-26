@@ -130,7 +130,7 @@ check [the contributor's page][contributors].
 
 MIT License
 
-Copyright (c) 2018 Pierrick Rouxel, 2021-2024 Barış Özdağ
+Copyright (c) 2018 Pierrick Rouxel, 2021-2025 Barış Özdağ
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
