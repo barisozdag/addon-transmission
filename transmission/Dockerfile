@@ -1,4 +1,4 @@
-ARG BUILD_FROM=ghcr.io/hassio-addons/base/aarch64:17.2.2
+ARG BUILD_FROM=ghcr.io/hassio-addons/base/aarch64:18.0.0
 # hadolint ignore=DL3006
 FROM ${BUILD_FROM}
 
@@ -17,10 +17,10 @@ ARG TRGUINGVERSION=v1.4.0
 
 # Setup base
 RUN apk add --no-cache \
-    curl=8.12.1-r1 \
-    coreutils=9.5-r2 \
-    nginx=1.26.3-r0 \
-    tar=1.35-r2 \
+    curl=8.14.1-r1 \
+    coreutils=9.7-r1 \
+    nginx=1.28.0-r3 \
+    tar=1.35-r3 \
     unzip=6.0-r15 \
     && apk --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community add --no-cache \
       transmission-daemon=${RELEASE} \
